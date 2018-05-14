@@ -23,11 +23,14 @@ class Controller:
         Creates model and view to be used with this controller.
         """        
         root = tkinter.Tk()          
-        root.title('Time Tracker by Cem H. Yesilyurt')        
+        root.title('Time Tracker by Cem H. Yesilyurt') 
+        # if user clicks x to close window, handle it gracefully:
+        root.protocol("WM_DELETE_WINDOW", root.quit)
+        
         self.model = MyDB()
         self.view = TopFrame(parent=root,controller=self)
         self.displayProjectsAndSessions()
-        self.view.mainloop()
+        self.view.mainloop()        
         root.destroy()
     
     
@@ -321,9 +324,10 @@ class Controller:
         
         # if no ongoing projects exist
         if len(projects) == 0:
-            self.displayMessageBox(msg='Sessions are associated with ongoing' +
-                                   'projects.\nNo ongoing projects to select' +
-                                   ' from.\nPlease create a project.')
+            self.displayMessageBox(msg='Sessions are associated with\n' +
+                                       'ongoing projects.  No ongoing\n' +
+                                       'projects to select from.\n' +
+                                       'Please create a project.')           
         
         # if ongoing projects exist
         else:            
@@ -382,10 +386,14 @@ class Controller:
         self.model.endSession(sessionId)
         self.model.cur.execute('''SELECT duration FROM Sessions
                                   WHERE id = ?;''', (sessionId,))
-        durationInMin = self.model.cur.fetchone()[0]
+        durationInMin = self.model.cur.fetchone()[0]        
+        if durationInMin == 1:
+            minLabel = 'minute'
+        else:
+            minLabel = 'minutes'
         self.displayMessageBox(msg='Your session lasted ' + 
-                               str(durationInMin) + ' minutes.\nIt has been' +
-                               ' recorded in the database.')                               
+                               str(durationInMin) + ' ' + minLabel + '.\n' +
+                               'It has been recorded in the database.')
         self.displayProjectsAndSessions()
         
     
