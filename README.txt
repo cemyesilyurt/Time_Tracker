@@ -5,6 +5,8 @@ Author: Cem Hasan Yesilyurt
 Date: 05/09/18
 Development Environment: Python 3.6.2
 
+Video demo: https://www.youtube.com/watch?v=viuPs4WgLG0
+
 Description:  This program tracks the user's time spent on a multitude of projects.  This is useful for consultants who want to track how much time they are spending on each project, in order to ensure accurate billing of their clients.  Or, it can be used by anyone who just wants to track how much time they spend on things while they are on the computer.  
 
 Program usage is as follows: The user can create a project and start a session for that project.  The program will continue to run in the background as the user performs their tasks.  When the user is done working for that session, he/she simply clicks the "end session" button.  This will record the end time and session duration in the database.  Multiple sessions can go on at the same time for different projects.  Multiple sessions can even go on for the same project.  This does not cause any problem with the program.  
