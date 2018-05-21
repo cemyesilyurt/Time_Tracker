@@ -1,7 +1,7 @@
 README.txt
 
 Program name: Time Tracker
-Author: Cem Hasan Yesilyurt
+Author: Cem H. Yesilyurt
 Date: 05/09/18
 Development Environment: Python 3.6.2
 
